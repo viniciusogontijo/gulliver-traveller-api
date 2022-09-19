@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 const port =  process.env.PORT || 3333;
 
-app.get('/hotel', (req, res) => {
+app.get('/all', (req, res) => {
     return res.json([
         {id:1, nama:'Hotel Teste 1'},
         {id:2, nama:'Hotel Teste 2'},
