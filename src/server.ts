@@ -11,6 +11,23 @@ app.get('/all', (req, res) => {
     ])
 })
 
+app.get('/getlocation', (req, res)=>{
+
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition( position => {
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+        },
+        error => {
+            console.log(error.message);
+        } 
+        )
+    } else{
+        console.log("Sem suporte");
+    }
+
+})
+
 app.listen(port, ()=> {
     console.info("api rodando")
 });
