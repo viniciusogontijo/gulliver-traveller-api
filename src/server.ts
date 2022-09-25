@@ -15,15 +15,17 @@ app.get('/getlocation', (req, res)=>{
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position => {
-            console.log(position.coords.latitude);
-            console.log(position.coords.longitude);
+            return res.json({
+                lat:position.coords.latitude,
+                lon:position.coords.longitude
+            })
         },
         error => {
-            console.log(error.message);
+            return res.json({error:error.message});
         } 
         )
     } else{
-        console.log("Sem suporte");
+        return res.json({error:"Sem suporte"});
     }
 
 })
